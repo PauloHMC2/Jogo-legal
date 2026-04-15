@@ -1,13 +1,8 @@
 #include "raylib.h"
 #include "game.h"
-
 Font fonte;
-
 void CarregarGame()
-{
-    fonte = LoadFont("fonte.ttf");
-}
-
+{fonte = LoadFont("fonte.ttf");}
 void Menu()
 {
     if (IsKeyDown(KEY_TAB))
@@ -19,8 +14,5 @@ void Menu()
         DrawTextEx(fonte,"Configs.",(Vector2){55,540},20,2,WHITE);
     }
 }
-
 void DescarregarGame()
-{
-    UnloadFont(fonte);
-}
+{UnloadFont(fonte);}
