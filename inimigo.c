@@ -3,31 +3,48 @@
 #include "inimigo.h"
 #include <math.h>
 
-float velinim = 0.4f;
-Vector2 posinim = {200.0f,400.0f};
+#define MAXINIM 5
 
-int numinim;
+float velinim = 1.5f;
 
+int qtdinim = 0;
 
-void QtdInim(int *numinim){
-    *numinim = GetRandomValue(1,5);
-}
-void movinim()
+Vector2 posinim[MAXINIM];
+
+void DefQtdeInim(int *qtdinim)
 {
-    Vector2 direcao = {0.0f, 0.0f};
+    *qtdinim = GetRandomValue(1, MAXINIM);
+}
 
-    direcao.x = posplayer.x - posinim.x;
-    direcao.y = posplayer.y - posinim.y;
+void Gerarinim(void)
+{
+    DefQtdeInim(&qtdinim);
 
-
-  float norma = sqrtf(direcao.x * direcao.x + direcao.y * direcao.y);
-
-    if(norma > 0.0f)
+    for (int i = 0; i < qtdinim; i++)
     {
-        direcao.x /= norma;
-        direcao.y /= norma;
+        posinim[i].x = GetRandomValue(100, 700);
+        posinim[i].y = GetRandomValue(100, 700);
     }
 
-    posinim.x += direcao.x *velinim;
-    posinim.y += direcao.y * velinim;
+}
+
+void MovInim(){
+    for (int i=0;i < qtdinim; i++)
+    {
+        Vector2 direção;
+
+        direção.x = posplayer.x - posinim[i].x;
+        direção.y = posplayer.y - posinim[i].y;
+        
+        float distancia = sqrtf(direção.x * direção.x + direção.y * direção.y);
+
+        if(distancia > 0){
+
+            direção.x /= distancia;
+            direção.y /= distancia;
+        }
+        posinim[i].x += direção.x * velinim;
+        posinim[i].y += direção.y * velinim;
+    }
+    
 }

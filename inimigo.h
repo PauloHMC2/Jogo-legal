@@ -3,9 +3,14 @@
 
 #include "raylib.h"
 
+#define MAXINIM 5
 
-extern Vector2 posinim;
+extern float velinim;
+extern int qtdinim;
+extern Vector2 posinim[MAXINIM];
 
-void movinim(void);
+void DefQtdeInim(int *qtdinim);
+void Gerarinim(void);
+void MovInim(void);
 
 #endif

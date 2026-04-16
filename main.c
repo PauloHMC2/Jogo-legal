@@ -2,21 +2,41 @@
 #include "player.h"
 #include "game.h"
 #include "inimigo.h"
-int main(){
-    InitWindow(1100,720,"ok");
-    CarregarGame();
 
-while(!WindowShouldClose()){
-    Movimento();
-    movinim();
-    BeginDrawing();
-        DrawRectangle(posplayer.x,posplayer.y,40,40,RED);
-        DrawRectangle(posinim.x,posinim.y,40,40,BLUE);
+int main(void)
+{
+    InitWindow(1100, 720, "ok");
+    SetTargetFPS(60);
+
+    CarregarGame();
+    Gerarinim();
+
+    while (!WindowShouldClose())
+    {
+        Movimento();
+        MovInim();
         Menu();
+        BeginDrawing();
         ClearBackground(RAYWHITE);
-    EndDrawing();
-}
-DescarregarGame();
-CloseWindow();
+
+        DrawRectangle(posplayer.x, posplayer.y, 40, 40, RED);
+
+        for (int i = 0; i < qtdinim; i++)
+        {
+            DrawRectangle(
+                posinim[i].x,
+                posinim[i].y,
+                20,
+                20,
+                BLACK
+            );
+        }
+
+        EndDrawing();
+    }
+
+    DescarregarGame();
+    CloseWindow();
+
     return 0;
 }

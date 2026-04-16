@@ -2,7 +2,7 @@
 #include "raylib.h"
 #include <math.h>
 
-float velocidade = 0.5f;
+float velocidade = 2.5f;
 Vector2 posplayer = {100.0f, 100.0f};
 
 void Movimento(){
