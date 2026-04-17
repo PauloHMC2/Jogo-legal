@@ -14,23 +14,17 @@ int main(void)
     while (!WindowShouldClose())
     {
         Movimento();
+        Correr(&velocidade,&stamina);
         MovInim();
-        Menu();
+
         BeginDrawing();
         ClearBackground(RAYWHITE);
-
-        DrawRectangle(posplayer.x, posplayer.y, 40, 40, RED);
-
-        for (int i = 0; i < qtdinim; i++)
-        {
-            DrawRectangle(
-                posinim[i].x,
-                posinim[i].y,
-                20,
-                20,
-                BLACK
-            );
-        }
+           
+            DrawRectangle(posplayer.x, posplayer.y, 40, 40, RED);
+            Menu();
+            
+            for (int i = 0; i < qtdinim; i++)
+            {DrawRectangle(posinim[i].x,posinim[i].y,40,40,BLACK);}
 
         EndDrawing();
     }
