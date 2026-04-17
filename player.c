@@ -23,6 +23,9 @@ void Correr(float *velocidade, float *stamina)
         if (*velocidade > 2.5f)
             *velocidade -= 0.5f;
     }
+    if(!IsKeyDown(KEY_LEFT_SHIFT)&& *stamina < 5){
+        *stamina += GetFrameTime()/3;
+    }
 }
 
 void Movimento(){

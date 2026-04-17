@@ -3,9 +3,13 @@
 #include "player.h"
 Font fonte;
 bool Menuaberto = false;
-
+float tempo;
 void CarregarGame()
 {fonte = LoadFont("fonte.ttf");}
+
+void Tempo(float *tempo){
+    *tempo += GetFrameTime();
+}
 
 void Menu()
 {
@@ -21,10 +25,19 @@ void Menu()
 
         DrawRectangle(50,535,400,30,BLACK);
         DrawTextEx(fonte,"Configs.",(Vector2){55,540},20,2,WHITE);
-
-        DrawText(TextFormat("Velocidade: %.2f",velocidade),455,500,20,WHITE);
-        DrawText(TextFormat("Stamina: %.2f",stamina),455,520,20,WHITE);
     }   
+
+
+
+
+
+
+}
+void Interface(){
+DrawRectangle(0,0,1100,120,BLACK);
+    DrawText(TextFormat("Tempo: %.2f",tempo),20,15,16,WHITE);
+    DrawText(TextFormat("Velocidade: %.2f",velocidade),20,60,15,WHITE);
+    DrawText(TextFormat("Stamina: %d",(int)stamina),20,75,15,WHITE);
 }
 void DescarregarGame()
 {UnloadFont(fonte);}

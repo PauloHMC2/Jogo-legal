@@ -5,7 +5,7 @@
 
 int main(void)
 {
-    InitWindow(1100, 720, "ok");
+    InitWindow(1100, 820, "ok");
     SetTargetFPS(60);
 
     CarregarGame();
@@ -13,10 +13,11 @@ int main(void)
 
     while (!WindowShouldClose())
     {
+        Tempo(&tempo);
         Movimento();
         Correr(&velocidade,&stamina);
         MovInim();
-
+        Interface();
         BeginDrawing();
         ClearBackground(RAYWHITE);
            
